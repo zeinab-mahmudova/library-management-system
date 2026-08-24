@@ -1,6 +1,6 @@
 package az.librarycrudapi.config;
 
-import az.librarycrudapi.Service.JwtService;
+import az.librarycrudapi.service.JwtService;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

@@ -1,6 +1,6 @@
-package az.librarycrudapi.Repository;
+package az.librarycrudapi.repository;
 
-import az.librarycrudapi.Entity.Order;
+import az.librarycrudapi.entity.Order;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

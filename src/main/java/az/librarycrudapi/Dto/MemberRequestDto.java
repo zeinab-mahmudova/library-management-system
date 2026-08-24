@@ -1,4 +1,4 @@
-package az.librarycrudapi.Dto;
+package az.librarycrudapi.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

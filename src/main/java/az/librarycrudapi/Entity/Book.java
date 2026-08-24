@@ -1,9 +1,8 @@
-package az.librarycrudapi.Entity;
+package az.librarycrudapi.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -22,7 +21,14 @@ public class Book {
     @Column(nullable = false)
     private String isbn;
 
+    @Column(name = "publication_year")
     private Integer publicationYear;
+
+    @Column(nullable = false)
+    private Double price;
+
+    @Column(nullable = false)
+    private Double discount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
@@ -32,14 +38,6 @@ public class Book {
     @JoinColumn(name = "borrowed_by_member_id")
     private Member borrowedBy;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "book_categories",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id")
-    )
-    private Set<Category> categories = new HashSet<>();
-
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<OrderItem> orderItems = new HashSet<>();
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<OrderItem> orderItems;
 }

@@ -1,8 +1,8 @@
-package az.librarycrudapi.Controller;
+package az.librarycrudapi.controller;
 
-import az.librarycrudapi.Dto.BookRequestDto;
-import az.librarycrudapi.Dto.BookResponseDto;
-import az.librarycrudapi.Service.BookService;
+import az.librarycrudapi.dto.BookRequestDto;
+import az.librarycrudapi.dto.BookResponseDto;
+import az.librarycrudapi.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -14,9 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/books")
+@RequestMapping("/api/v1/books")
 @RequiredArgsConstructor
-@Tag(name = "Book Controller", description = "Kitab emeliyyatlarinin idare edilmesi")
+@Tag(name = "Book Controller", description = "Kitab emeliyyatlarinin idare edilmesi (v1)")
 public class BookController {
 
     private final BookService bookService;
@@ -51,5 +51,18 @@ public class BookController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         bookService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/search")
+    @Operation(summary = "Kitablarin dinamik axtarilmasi")
+    public ResponseEntity<Page<BookResponseDto>> searchBooks(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String author,
+            @RequestParam(required = false) Double minPrice,
+            @RequestParam(required = false) Double maxPrice,
+            @RequestParam(required = false) Double minDiscount,
+            @RequestParam(required = false) Double maxDiscount,
+            Pageable pageable) {
+        return ResponseEntity.ok(bookService.searchBooks(title, author, minPrice, maxPrice, minDiscount, maxDiscount, pageable));
     }
 }

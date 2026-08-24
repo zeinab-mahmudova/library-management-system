@@ -1,3 +1,5 @@
 spring:
   profiles:
-    active: dev
+    active: local
+  application:
+    name: library-management-system

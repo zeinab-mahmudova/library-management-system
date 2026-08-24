@@ -1,8 +1,8 @@
-package az.librarycrudapi.Controller;
+package az.librarycrudapi.controller;
 
-import az.librarycrudapi.Dto.OrderRequestDto;
-import az.librarycrudapi.Dto.OrderResponseDto;
-import az.librarycrudapi.Service.OrderService;
+import az.librarycrudapi.dto.OrderRequestDto;
+import az.librarycrudapi.dto.OrderResponseDto;
+import az.librarycrudapi.service.OrderService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -13,13 +13,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDateTime;
 
 @RestController
-@RequestMapping("/api/orders")
+@RequestMapping("/api/v1/orders")
 @RequiredArgsConstructor
-@Tag(name = "Order Controller", description = "Sifaris emeliyyatlarinin idare edilmesi")
+@Tag(name = "Order Controller", description = "Sifaris emeliyyatlarinin idare edilmesi (v1)")
 public class OrderController {
 
     private final OrderService orderService;

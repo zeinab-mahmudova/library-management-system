@@ -36,12 +36,12 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/books/**", "/api/authors/**", "/api/members/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.PUT, "/api/books/**", "/api/authors/**", "/api/members/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "/api/books/**", "/api/authors/**", "/api/members/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/books/**", "/api/authors/**", "/api/members/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/books/**", "/api/v1/authors/**", "/api/v1/members/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/books/**", "/api/v1/authors/**", "/api/v1/members/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/books/**", "/api/v1/authors/**", "/api/v1/members/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/v1/books/**", "/api/v1/authors/**", "/api/v1/members/**").hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(exception -> exception

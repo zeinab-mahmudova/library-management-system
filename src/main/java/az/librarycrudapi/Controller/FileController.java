@@ -1,6 +1,6 @@
-package az.librarycrudapi.Controller;
+package az.librarycrudapi.controller;
 
-import az.librarycrudapi.Service.FileService;
+import az.librarycrudapi.service.FileService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -15,9 +15,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 @RestController
-@RequestMapping("/api/files")
+@RequestMapping("/api/v1/files")
 @RequiredArgsConstructor
-@Tag(name = "File Controller", description = "Fayllarin yuklenmesi ve endirilmesi emeliyyatlarinin idare edilmesi")
+@Tag(name = "File Controller", description = "Fayllarin yuklenmesi ve endirilmesi emeliyyatlarinin idare edilmesi (v1)")
 public class FileController {
 
     private final FileService fileService;

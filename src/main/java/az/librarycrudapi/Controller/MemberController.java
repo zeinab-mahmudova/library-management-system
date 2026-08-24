@@ -1,8 +1,8 @@
-package az.librarycrudapi.Controller;
+package az.librarycrudapi.controller;
 
-import az.librarycrudapi.Dto.MemberRequestDto;
-import az.librarycrudapi.Dto.MemberResponseDto;
-import az.librarycrudapi.Service.MemberService;
+import az.librarycrudapi.dto.MemberRequestDto;
+import az.librarycrudapi.dto.MemberResponseDto;
+import az.librarycrudapi.service.MemberService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -14,9 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/members")
+@RequestMapping("/api/v1/members")
 @RequiredArgsConstructor
-@Tag(name = "Member Controller", description = "Uzvelrin emeliyyatlarinin idare edilmesi")
+@Tag(name = "Member Controller", description = "Uzvelrin emeliyyatlarinin idare edilmesi (v1)")
 public class MemberController {
 
     private final MemberService memberService;

@@ -1,4 +1,4 @@
-package az.librarycrudapi.Entity;
+package az.librarycrudapi.enums;
 
 public enum Role {
     USER,

@@ -1,19 +1,19 @@
 package az.librarycrudapi;
 
-import az.librarycrudapi.Dto.AuthorRequestDto;
-import az.librarycrudapi.Dto.AuthorResponseDto;
-import az.librarycrudapi.Entity.Author;
-import az.librarycrudapi.Exception.ResourceNotFoundException;
-import az.librarycrudapi.Repository.AuthorRepository;
-import az.librarycrudapi.Service.AuthorService;
+import az.librarycrudapi.dto.AuthorRequestDto;
+import az.librarycrudapi.dto.AuthorResponseDto;
+import az.librarycrudapi.entity.Author;
+import az.librarycrudapi.exception.ResourceNotFoundException;
+import az.librarycrudapi.mapper.AuthorMapper;
+import az.librarycrudapi.repository.AuthorRepository;
+import az.librarycrudapi.service.impl.AuthorServiceImpl;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -23,35 +23,50 @@ public class AuthorServiceTest {
     @Mock
     private AuthorRepository authorRepository;
 
+    @Mock
+    private AuthorMapper authorMapper;
+
     @InjectMocks
-    private AuthorService authorService;
+    private AuthorServiceImpl authorService;
 
-    @Test
-    void shouldCreateAuthor() {
-        AuthorRequestDto dto = new AuthorRequestDto();
-        dto.setFullName("Cəfər Cabbarlı");
-        dto.setCountry("Azərbaycan");
+    private Author author;
+    private AuthorRequestDto requestDto;
+    private AuthorResponseDto responseDto;
 
-        Author saved = new Author();
-        saved.setId(1L);
-        saved.setFullName("Cəfər Cabbarlı");
-        saved.setCountry("Azərbaycan");
+    @BeforeEach
+    void setUp() {
+        author = new Author();
+        author.setId(1L);
+        author.setFullName("Nizami Gencevi");
+        author.setCountry("Azerbaycan");
 
-        when(authorRepository.save(any(Author.class))).thenReturn(saved);
+        requestDto = new AuthorRequestDto();
+        requestDto.setFullName("Nizami Gencevi");
+        requestDto.setCountry("Azerbaycan");
 
-        AuthorResponseDto result = authorService.create(dto);
-
-        assertNotNull(result);
-        assertEquals("Cəfər Cabbarlı", result.getFullName());
-        assertEquals(1L, result.getId());
+        responseDto = new AuthorResponseDto();
+        responseDto.setId(1L);
+        responseDto.setFullName("Nizami Gencevi");
+        responseDto.setCountry("Azerbaycan");
     }
 
     @Test
-    void shouldThrowExceptionWhenAuthorNotFound() {
-        when(authorRepository.findById(999L)).thenReturn(Optional.empty());
+    void testGetById_Success() {
+        when(authorRepository.findById(1L)).thenReturn(Optional.of(author));
+        when(authorMapper.toResponseDto(author)).thenReturn(responseDto);
 
-        assertThrows(ResourceNotFoundException.class, () -> {
-            authorService.getById(999L);
-        });
+        AuthorResponseDto result = authorService.getById(1L);
+
+        assertNotNull(result);
+        assertEquals("Nizami Gencevi", result.getFullName());
+        verify(authorRepository, times(1)).findById(1L);
+    }
+
+    @Test
+    void testGetById_NotFound() {
+        when(authorRepository.findById(1L)).thenReturn(Optional.empty());
+
+        assertThrows(ResourceNotFoundException.class, () -> authorService.getById(1L));
+        verify(authorRepository, times(1)).findById(1L);
     }
 }

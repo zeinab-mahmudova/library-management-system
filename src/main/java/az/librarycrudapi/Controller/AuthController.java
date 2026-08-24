@@ -1,8 +1,8 @@
-package az.librarycrudapi.Controller;
+package az.librarycrudapi.controller;
 
-import az.librarycrudapi.Dto.AuthRequestDto;
-import az.librarycrudapi.Dto.AuthResponseDto;
-import az.librarycrudapi.Service.AuthService;
+import az.librarycrudapi.dto.AuthRequestDto;
+import az.librarycrudapi.dto.AuthResponseDto;
+import az.librarycrudapi.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -11,9 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
-@Tag(name = "Auth Controller", description = "Qeydiyyat ve Giriş emeliyyatlarinin idare edilmesi")
+@Tag(name = "Auth Controller", description = "Qeydiyyat ve Giris emeliyyatlarinin idare edilmesi (v1)")
 public class AuthController {
 
     private final AuthService authService;

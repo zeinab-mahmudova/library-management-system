@@ -1,4 +1,4 @@
-package az.librarycrudapi.Dto;
+package az.librarycrudapi.dto;
 
 import lombok.Getter;
 import lombok.Setter;

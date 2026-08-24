@@ -1,6 +1,6 @@
-package az.librarycrudapi.Service;
+package az.librarycrudapi.service;
 
-import az.librarycrudapi.Repository.OrderRepository;
+import az.librarycrudapi.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;

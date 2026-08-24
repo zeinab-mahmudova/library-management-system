@@ -1,4 +1,4 @@
-package az.librarycrudapi.Entity;
+package az.librarycrudapi.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

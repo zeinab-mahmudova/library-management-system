@@ -1,5 +1,6 @@
-package az.librarycrudapi.Entity;
+package az.librarycrudapi.entity;
 
+import az.librarycrudapi.enums.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

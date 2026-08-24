@@ -1,11 +1,11 @@
 package az.librarycrudapi;
 
-import az.librarycrudapi.Dto.OrderRequestDto;
-import az.librarycrudapi.Dto.OrderItemRequestDto;
-import az.librarycrudapi.Entity.Member;
-import az.librarycrudapi.Repository.MemberRepository;
-import az.librarycrudapi.Repository.OrderRepository;
-import az.librarycrudapi.Service.OrderService;
+import az.librarycrudapi.dto.OrderRequestDto;
+import az.librarycrudapi.dto.OrderItemRequestDto;
+import az.librarycrudapi.entity.Member;
+import az.librarycrudapi.repository.MemberRepository;
+import az.librarycrudapi.repository.OrderRepository;
+import az.librarycrudapi.service.OrderService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

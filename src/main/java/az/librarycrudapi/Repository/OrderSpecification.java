@@ -1,6 +1,6 @@
-package az.librarycrudapi.Repository;
+package az.librarycrudapi.repository;
 
-import az.librarycrudapi.Entity.Order;
+import az.librarycrudapi.entity.Order;
 import org.springframework.data.jpa.domain.Specification;
 import java.time.LocalDateTime;
 

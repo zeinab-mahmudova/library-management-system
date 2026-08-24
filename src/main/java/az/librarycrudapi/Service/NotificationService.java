@@ -1,4 +1,4 @@
-package az.librarycrudapi.Service;
+package az.librarycrudapi.service;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;

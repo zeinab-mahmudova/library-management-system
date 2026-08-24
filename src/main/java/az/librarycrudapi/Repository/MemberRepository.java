@@ -1,6 +1,6 @@
-package az.librarycrudapi.Repository;
+package az.librarycrudapi.repository;
 
-import az.librarycrudapi.Entity.Member;
+import az.librarycrudapi.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {

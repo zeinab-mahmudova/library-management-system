@@ -1,8 +1,8 @@
-package az.librarycrudapi.Controller;
+package az.librarycrudapi.controller;
 
-import az.librarycrudapi.Dto.AuthorRequestDto;
-import az.librarycrudapi.Dto.AuthorResponseDto;
-import az.librarycrudapi.Service.AuthorService;
+import az.librarycrudapi.dto.AuthorRequestDto;
+import az.librarycrudapi.dto.AuthorResponseDto;
+import az.librarycrudapi.service.AuthorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -14,9 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/authors")
+@RequestMapping("/api/v1/authors")
 @RequiredArgsConstructor
-@Tag(name = "Author Controller", description = "Muellif emeliyyatlarinin idare edilmesi")
+@Tag(name = "Author Controller", description = "Muellif emeliyyatlarinin idare edilmesi (v1)")
 public class AuthorController {
 
     private final AuthorService authorService;
@@ -24,8 +24,7 @@ public class AuthorController {
     @PostMapping
     @Operation(summary = "Yeni muellif yaradilmasi")
     public ResponseEntity<AuthorResponseDto> create(@Valid @RequestBody AuthorRequestDto dto) {
-        AuthorResponseDto created = authorService.create(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+        return ResponseEntity.status(HttpStatus.CREATED).body(authorService.create(dto));
     }
 
     @GetMapping

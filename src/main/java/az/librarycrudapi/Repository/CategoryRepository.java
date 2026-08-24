@@ -1,6 +1,6 @@
-package az.librarycrudapi.Repository;
+package az.librarycrudapi.repository;
 
-import az.librarycrudapi.Entity.Category;
+import az.librarycrudapi.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

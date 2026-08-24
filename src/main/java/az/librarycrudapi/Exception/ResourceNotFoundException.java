@@ -1,4 +1,4 @@
-package az.librarycrudapi.Exception;
+package az.librarycrudapi.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
 

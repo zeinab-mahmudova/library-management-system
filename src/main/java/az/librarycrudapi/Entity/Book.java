@@ -38,6 +38,14 @@ public class Book {
     @JoinColumn(name = "borrowed_by_member_id")
     private Member borrowedBy;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "book_categories",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private Set<Category> categories;
+
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<OrderItem> orderItems;
 }
